@@ -1,0 +1,36 @@
+{
+  "name": "frame-bot",
+  "version": "1.0.0",
+  "description": "Have a directory of video files you'd like to take some snapshots of? Feel like tweeting one of those random images afterwards? frame-bot may be for you.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tweet-random": "DEBUG=tweet_random_frame node ./bin/tweet_random_frame.js",
+    "make-frames": "DEBUG=makeframes,makeframe_service node ./bin/make_frames.js -s -m -i ../test/ -o ./dump/"
+  },
+  "author": "Dakota Clark",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.1.0",
+    "config": "^3.2.4",
+    "dashdash": "^1.14.1",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "dropbox-v2-api": "^2.4.7",
+    "jsesc": "^2.5.2",
+    "twitter": "^1.7.1"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dudethatbe/frame-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dudethatbe/frame-bot/issues"
+  },
+  "homepage": "https://github.com/dudethatbe/frame-bot#readme"
+}
