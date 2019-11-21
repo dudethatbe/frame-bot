@@ -129,7 +129,7 @@ const start = () => {
       client.post('media/upload', {media: data}, cb);
     }, 
     (media, e, cb) => {
-      debug('media', media);
+      //debug('media', media);
       let status = {
         media_ids: media.media_id_string
       }
