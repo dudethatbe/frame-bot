@@ -1,4 +1,4 @@
-## quick-start
+## guide
 So you want to make the worlds best out of context twitter bot, why not? First you'll need to make some images from these cool videos you want people to see on twitter. This repository contains a script that can make these image files ```make-frames```. This script assumes you have a ```test``` folder alongside the cloned ```frame-bot``` repo. Place one of those amazing video files inside this ```test``` folder. Extra points if you leave out any non-ascii characters  from the file's name ➕ While you're at it, create a ```dump``` folder inside of this repo, you'll need somewhere to put all these frames. 
 So at this point, you're directory structure should resemble something like this
 ```
