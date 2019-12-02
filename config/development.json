@@ -1,9 +1,9 @@
 {
   "frame_settings": {
-    "intro_delay": 5,
-    "credits_trim": 5,
-    "interval": 600,
-    "scale_width": 640,
-    "scale_height": 480
+    "intro_delay": 0,
+    "credits_trim": 0,
+    "interval": 300,
+    "scale_width": 512,
+    "scale_height": 384
   }
 }

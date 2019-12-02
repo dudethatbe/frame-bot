@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "convert-videos": "DEBUG=video_convert node ./bin/convert_videos.js -i ../test/s2/ -o ./dump/ -e mkv",
+    "analyze-videos": "DEBUG=video_analyze node ./bin/analyze_videos.js -i ../test/s2/ -o ./dump/itsgarryshandlingsshow.csv",
     "tweet-random": "DEBUG=tweet_random_frame node ./bin/tweet_random_frame.js",
-    "make-frames": "DEBUG=makeframes,makeframe_service node ./bin/make_frames.js -s -m -i ../test/ -o ./dump/"
+    "make-frames": "DEBUG=makeframes,makeframe_service node ./bin/make_frames -s -m -i ../test/ -o ./dump/"
   },
   "author": "Dakota Clark",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "dropbox-v2-api": "^2.4.7",
+    "fast-csv": "^3.4.0",
     "jsesc": "^2.5.2",
     "twitter": "^1.7.1"
   },
