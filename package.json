@@ -8,6 +8,7 @@
     "convert-videos": "DEBUG=video_convert node ./bin/convert_videos.js -i ../test/s2/ -o ./dump/ -e mkv",
     "analyze-videos": "DEBUG=video_analyze node ./bin/analyze_videos.js -i ../test/s2/ -o ./dump/itsgarryshandlingsshow.csv",
     "tweet-random": "DEBUG=tweet_random_frame node ./bin/tweet_random_frame.js",
+    "tweet-random-sub": "DEBUG=tweet_random_frame node ./bin/tweet_random_frame.js -s",
     "make-frames": "DEBUG=makeframes,makeframe_service node ./bin/make_frames -s -m -i ../test/ -o ./dump/"
   },
   "author": "Dakota Clark",

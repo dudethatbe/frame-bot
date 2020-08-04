@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const debug = require('debug')('tweet_random_frame');
 const async = require('async');
+const dashdash = require('dashdash');
 // verify twitter settings
 if (!process.env.CONSUMER_KEY) {
   throw new Error('Missing CONSUMER_KEY');
@@ -29,6 +30,14 @@ if (!process.env.ACCESS_TOKEN) {
 if (!process.env.FOLDER) {
   throw new Error('Missing FOLDER');
 }
+const options = [{
+  names: ['subfolder', 's'],
+  type: 'bool',
+  default: false,
+  help: 'Select from another subfolder before tweeting image'
+}]
+const opts = dashdash.parse({options: options});
+
 const getRandom = (max) => {
   return Math.floor(Math.random() * Math.floor(max));
 }
@@ -46,6 +55,7 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET,
 });
 const getEntries = (path, finish) => {
+  debug('getting entries from path ' + path)
   dropbox({
     resource: 'files/list_folder',
     parameters: {
@@ -72,7 +82,21 @@ async.waterfall([
   (selected, cb) => {
     selectedFolder = selected;
     debug(`Selected folder ${selectedFolder.path_display}`);
-    getEntries(selectedFolder.path_lower, cb)
+    if (opts.subfolder) {
+
+      getEntries(selectedFolder.path_lower, (res, response, d_cb) => {
+        getRandomEntry(response, (err, selectedSubFolder, inner_cb) => {
+          if (err) {
+            cb(err)
+          } else {
+            debug(`Selected *sub*folder ${selectedFolder.path_display}`);
+            getEntries(selectedSubFolder.path_lower, cb)
+          }
+        })
+      })
+    } else {
+      getEntries(selectedFolder.path_lower, cb)
+    }
   }, 
   (res, response, cb) => {
     getRandomEntry(res, cb);
@@ -147,4 +171,4 @@ const start = () => {
     }
   })
 }
-start();
+start(opts.subfolder);
