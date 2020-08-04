@@ -1,6 +1,6 @@
 ## project-status
 
-This is very much a WIP. Note the distinct lack of badges 🟟 There isn't a framework or much to install for dependencies. Essentially this repo is a collection of nodejs scipts to allow you to do 2 fundamental things:
+This is very much a WIP. Note the distinct lack of badges 📛 There isn't a framework or much to install for dependencies. Essentially this repo is a collection of nodejs scipts to allow you to do 2 fundamental things:
 
 * take x screenshots from video files and save them to a directory
 
