@@ -4,12 +4,11 @@ This repo is still a WIP. Note the lack of badges 📛 and other indications of 
   * does the same thing in this FFMPEG guide https://trac.ffmpeg.org/wiki/Create%20a%20thumbnail%20image%20every%20X%20seconds%20of%20the%20video
   * This is a "weak" process; only handles standard ascii characters in names (good luck with your animes). you have to be well aware of the videos dimensions, duration, and content before getting any results.
 * retrieve an image file from Dropbox and attach it to a tweet
-  * This requires you have both a Dropbox and Twitter app. You will have to be able to get access tokens for all of this to work. I have a empty repo https://github.com/dudethatbe/frame-bot-tweeter that is still in development. It requires a mongodb 
-  instance along with dropbox/twitter apps. These are easy to accomplish and free to most, but I plan on furthering the discussion there. 
-Look in the "scripts" section of ```package.json``` to see which modules are used and their arguments. Feel free to open an issue if you have any questions.
+  * This requires you have both a Dropbox and Twitter app. You will have to be able to get access tokens for all of this to work. I have a empty repo https://github.com/dudethatbe/frame-bot-tweeter that is still in development. It requires a mongodb instance along with dropbox/twitter apps. These are easy to accomplish and free to most, but I plan on furthering the discussion there. 
+Look in the "scripts" section of `package.json` to see which modules are used and their arguments.
 
 ## making-screenshots
-This guide assumes you have a folder of video files and are reasonably comfortable with using ffprobe and ffmpeg with the command line. Make a ```config``` folder inside your cloned repo and create a file that will be used to generate these images; Something like ```mkdir config && touch config/gumby.json```. Open up this json file and paste this:
+This guide assumes you have a folder of video files and are reasonably comfortable with using ffprobe and ffmpeg with the command line. Make a `config` folder inside your cloned repo and create a file that will be used to generate these images; Something like `mkdir config && touch config/gumby.json`. Open up this json file and paste this:
 ```
 {
   "frame_settings": {
@@ -21,25 +20,29 @@ This guide assumes you have a folder of video files and are reasonably comfortab
   }
 }
 ```
-*```intro_delay```
- ** number of ms to offset the image capturing (for skipping the "intro")
-*```credits_trim```
- ** similar to intro_delay, but sets the end of the captured images to be earlier than the duration
-*```interval```
- ** number of ms to capture an image; e.g. ```800``` would get an image every 8 seconds
-*```scale_width```
- ** scaled width of images 
-*```scale_height```
- ** scaled height of images
+
+* `intro_delay`
+  * number of ms to offset the image capturing (for skipping the "intro")
+
+* `credits_trim`
+  * similar to intro_delay, but sets the end of the captured images to be earlier than the duration
+
+* `interval` 
+  * number of ms to capture an image; e.g. ```800``` would get an image every 8 seconds
+
+* `scale_width` 
+  * scaled width of images 
+
+* `scale_height` 
+  * scaled height of images
 
 As you can see from these properties you can see that you can arbitrarily choose sections of a video to capture images from, and they are all scaled to be the same height and width. Now that you have a config file, edit the ```package.json``` file after finding the ```make-frames``` script. Set a ```NODE_ENV=gumby``` to configure this script to use the config file you just created. Then look for the ```-i``` argument and change the referenced file path relative to your cloned repository. For example:
 ```
 "scripts": {
   "make-frames": "NODE_ENV=gumby DEBUG=makeframe_service node ./bin/make_frames.js -s -m -i /mnt/d/cool_videos/gumby_season_1 -o ./dump"
 }
-}
 ```
-The last thing worth pointing out is the ```-o dump``` argument for the script. This will create a directory called dump and save all of the images there. From our earlier example, if the script worked as expected then you would have a file/folder structure demonstrated below:
+The most important part is the ```-o dump``` argument for the script. This will create a directory called dump and save all of the images there. From our earlier example, if the script worked as expected then you would have a file/folder structure demonstrated below:
 ```
 $ ls ./dump/Gumby\ -\ The\ Gumby\ League-Qq2BDoBNWPc/
 'Gumby - The Gumby League-Qq2BDoBNWPc0001.png'  'Gumby - The Gumby League-Qq2BDoBNWPc0005.png'
@@ -48,6 +51,8 @@ $ ls ./dump/Gumby\ -\ The\ Gumby\ League-Qq2BDoBNWPc/
 'Gumby - The Gumby League-Qq2BDoBNWPc0004.png'  'Gumby - The Gumby League-Qq2BDoBNWPc0008.png'
 ```
 Each video file will create a folder that will contain all of its related images. Personally I find it's easiest to set the input value to a generic folder and move the video files in and out of file while processing (as opposed to getting the path exactly right). I guess it's kind of a lot, but what can you really expect with such a process? Not every video is the same YMMV 
+
+Look at the `bin/make_frames.js` file if you are curious about what some of the other arguments are and the referenced modules it uses to generate these images. It essentially takes your config files and structures FFmpeg commands to the command-line and not much of anything else. There is a lazy approach to escaping filenames, but it is not robust to handle a majority of files you could throw at it (without modifying them in some way prior to running this script)
 
 ## sharing-screenshots
 So now that you have some folders of images, you'll undoubtedly want to share them. If you want to post them on twitter and happen to have a dropbox subscription, then continue reading this guide. If you're looking to host these elsewhere or post them on other platforms, then reach out to me with a new issue, but at the moment this is just what I had available at the time. 
