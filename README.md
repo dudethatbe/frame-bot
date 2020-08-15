@@ -65,12 +65,6 @@ ACCESS_TOKEN_KEY=
 ACCESS_TOKEN_SECRET=
 ```
 
-This script will connect to your dropbox folder, find a sub folder (in our case, there's one only one to choose from), and then chooses a random file within this chosen folder. This image is downloaded, posted as a new status update with your twitter app/client credentials, and removed from the local disk. Check the script `bin/tweet_random_frame.js` for more details on how it chooses an image. 
-
-
-
-Support for subfolders has been added `npm run tweet-random-sub` so if you categorize your dropbox folders in a Season -> Episode type of format, then it will be able to select and tweet and image from this structure:
-
 The first group at the top are your twitter credentials. You'll need the app id and the client access tokens to be able to tweet as an account. The second group are the dropbox settings, including the folder to find these images from. The example shows `/gumby`. When you grant access to a dropbox application, it creates an `Apps` folder in your dropbox directory. Within that directory, you have to create a new directory and store these image-laden folders in. Working off our earlier example, the folder looks like:
 `Apps/frame-bot/gumby` (the `frame-bot` part is the name of the application you apply to the dropbox app)
 
