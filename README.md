@@ -2,6 +2,7 @@
 This repo is still a WIP. Note the lack of badges 📛 and other indications of activity. There isn't a framework or much to install really. Just a couple of hard-to-read Nodejs scipts to allow you to do 2 fundamental things:
 * take numerous screenshots from videos and save them to distinct directories
   * does the same thing in this FFMPEG guide https://trac.ffmpeg.org/wiki/Create%20a%20thumbnail%20image%20every%20X%20seconds%20of%20the%20video
+  * but actually uses this `select` filter https://ffmpeg.org/ffmpeg-filters.html#toc-Examples-140
   * This is a "weak" process; only handles standard ascii characters in names (good luck with your animes). you have to be well aware of the videos dimensions, duration, and content before getting any results.
 * retrieve an image file from Dropbox and attach it to a tweet
   * This requires you have both a Dropbox and Twitter app. You will have to be able to get access tokens for all of this to work. I have a empty repo https://github.com/dudethatbe/frame-bot-tweeter that is still in development. It requires a mongodb instance along with dropbox/twitter apps. These are easy to accomplish and free to most, but I plan on furthering the discussion there. 
