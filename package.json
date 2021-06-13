@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "convert-videos": "DEBUG=video_convert node ./bin/convert_videos.js -i ../test/s2/ -o ./dump/ -e mkv",
-    "analyze-videos": "DEBUG=video_analyze node ./bin/analyze_videos.js -i ../test/s2/ -o ./dump/itsgarryshandlingsshow.csv",
+    "check-dropbox": "node ./bin/count_uploads.js",
+    "check-mongo": "node ./bin/test_mongo.js",
+    "convert-videos": "DEBUG=video_convert node ./bin/convert_videos.js -i ../input -o ./dump/ -e mkv",
+    "analyze-videos": "DEBUG=video_analyze node ./bin/analyze_videos.js -i ../input -o ./dump/output.csv",
     "tweet-random": "DEBUG=tweet_random_frame node ./bin/tweet_random_frame.js",
     "tweet-random-sub": "DEBUG=tweet_random_frame node ./bin/tweet_random_frame.js -s",
-    "make-frames": "DEBUG=makeframes,makeframe_service node ./bin/make_frames -s -m -i ../test/ -o ./dump/"
+    "make-frames": "DEBUG=makeframes,makeframe_service node ./bin/make_frames -s -m -i ../input -o ./dump/"
   },
   "author": "Dakota Clark",
   "license": "ISC",
@@ -19,9 +21,11 @@
     "dashdash": "^1.14.1",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
+    "dropbox": "^9.8.6",
     "dropbox-v2-api": "^2.4.7",
-    "fast-csv": "^3.4.0",
+    "fast-csv": ">=4.3.6",
     "jsesc": "^2.5.2",
+    "mongodb": "^3.6.9",
     "twitter": "^1.7.1"
   },
   "directories": {
