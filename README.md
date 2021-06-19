@@ -37,13 +37,14 @@ This guide assumes you have a folder of video files and are reasonably comfortab
 * `scale_height` 
   * scaled height of images
 
-As you can see from these properties you can see that you can arbitrarily choose sections of a video to capture images from, and they are all scaled to be the same height and width. Now that you have a config file, edit the ```package.json``` file after finding the ```make-frames``` script. Set a ```NODE_ENV=gumby``` to configure this script to use the config file you just created. Then look for the ```-i``` argument and change the referenced file path relative to your cloned repository. For example:
+From these properties, you can arbitrarily choose sections of a video to capture images from, and scale them to use the same dimensions. In the config file, edit the ```package.json``` file after finding the ```make-frames``` script. 
+Set a ```NODE_ENV=gumby``` to configure this script to use the config file you just created. Then look for the ```-i``` argument and supply the input folder. For example:
 ```
 "scripts": {
   "make-frames": "NODE_ENV=gumby DEBUG=makeframe_service node ./bin/make_frames.js -s -m -i /mnt/d/cool_videos/gumby_season_1 -o ./dump"
 }
 ```
-The most important part is the ```-o dump``` argument for the script. This will create a directory called dump and save all of the images there. From our earlier example, if the script worked as expected then you would have a file/folder structure demonstrated below:
+The last part is the ```-o dump``` argument. After you create the folder, all of the images will be saved there. From our earlier example, you would have a file/folder structure demonstrated below:
 ```
 $ ls ./dump/Gumby\ -\ The\ Gumby\ League-Qq2BDoBNWPc/
 'Gumby - The Gumby League-Qq2BDoBNWPc0001.png'  'Gumby - The Gumby League-Qq2BDoBNWPc0005.png'
@@ -51,9 +52,7 @@ $ ls ./dump/Gumby\ -\ The\ Gumby\ League-Qq2BDoBNWPc/
 'Gumby - The Gumby League-Qq2BDoBNWPc0003.png'  'Gumby - The Gumby League-Qq2BDoBNWPc0007.png'
 'Gumby - The Gumby League-Qq2BDoBNWPc0004.png'  'Gumby - The Gumby League-Qq2BDoBNWPc0008.png'
 ```
-Each video file will create a folder that will contain all of its related images. Personally I find it's easiest to set the input value to a generic folder and move the video files in and out of file while processing (as opposed to getting the path exactly right). I guess it's kind of a lot, but what can you really expect with such a process? Not every video is the same YMMV 
-
-Look at the `bin/make_frames.js` file if you are curious about what some of the other arguments are and the referenced modules it uses to generate these images. It essentially takes your config files and structures FFmpeg commands to the command-line and not much of anything else. There is a lazy approach to escaping filenames, but it is not robust to handle a majority of files you could throw at it (without modifying them in some way prior to running this script)
+Each video file will create a folder that will contain all of its related images. Personally, I find it's easiest to set the input value to a newly-created folder, move the intended video files into it, instead of getting the input path exactly right. It uses a lazy approach to escaping filenames, which means it isn't robust enough to handle a lot of variation with your input files.  YMMV 🛣 Look at the `bin/make_frames.js` for more details
 
 ## sharing-screenshots
 So now that you have some folders of images, you'll undoubtedly want to share them. If you want to post them on twitter and happen to have a dropbox subscription, then continue reading this guide. If you're looking to host these elsewhere or post them on other platforms, then reach out to me with a new issue, but at the moment this is just what I had available at the time. 
