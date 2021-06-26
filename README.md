@@ -1,4 +1,11 @@
 ## project-status
+I'm moving this project to Gitlab
+https://gitlab.com/dudethatbe/frame-bot/-/tree/main
+
+Github is a replaceable platform for replaceable humans :)
+
+---
+
 This repo is still a WIP. Note the lack of badges 📛 and other indications of activity. There isn't a framework or much to install really. Just a couple of hard-to-read Nodejs scipts to allow you to do 2 fundamental things:
 * take numerous screenshots from videos and save them to distinct directories
   * does the same thing in this FFMPEG guide https://trac.ffmpeg.org/wiki/Create%20a%20thumbnail%20image%20every%20X%20seconds%20of%20the%20video
