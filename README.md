@@ -2,7 +2,7 @@
 I'm moving this project to Gitlab
 https://gitlab.com/dudethatbe/frame-bot/-/tree/main
 
-Github is a replaceable platform for replaceable humans :)
+Github is a replaceable platform for replaceable humans :) So here's a garbage repo for historical purposes. It'll disappear eventually. Not like I imagine anyone's desperate to read through some poorly-implemented and documented code. Seriously, check the gitlab repo for an easier to understand project. If any of this is news to you then I'd suggest looking at https://github.com/selfagency/microsoft-drop-ice ◀
 
 ---
 
